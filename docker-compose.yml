@@ -1,0 +1,15 @@
+services:
+        app:
+                build: ./app
+                links:
+                        - db
+                ports:
+                        - "5000:5000"
+        db:
+                image: mysql:latest
+                ports:
+                        - "3306:3306"
+                environment:
+                        MYSQL_ROOT_PASSWORD: G3n3r1cP@ssw0rd!
+                volumes:
+                        - ./db:/docker-entrypoint-initdb.d/:ro
